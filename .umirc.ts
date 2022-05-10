@@ -22,10 +22,11 @@ export default defineConfig({
       // path: '链接是可选的',
       // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
       children: [
-        { title: '日常记录', path: '/guide' },
-        { title: 'leetCode每周迷惑行为', path: '/leetCode' },
-        { title: 'JS头秃学习中', path: '/guide' },
-        { title: 'React学习指南', path: '/guide' },
+        { title: '日常记录', path: '/daily-record' },
+        { title: 'leetCode每周迷惑行为', path: '/leet-code' },
+        { title: 'JS头秃学习中', path: '/js' },
+        { title: 'React学习指南', path: '/react' },
+        { title: '工具类', path: '/utils' },
       ],
     },
   ],

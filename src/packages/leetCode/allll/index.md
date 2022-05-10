@@ -1,14 +1,15 @@
 ---
 nav:
   title: leetCode习题册
-  path: /leetCode
+  path: /leet-code
 order: 1
 group:
   path: /layout
   title: 这里是1111
   order: 1
 ---
-## 进口的接口333333333333
+
+## 进口的接口 333333333333
 
 Demo:
 
@@ -18,5 +19,3 @@ import { Foo } from 'myblog';
 
 export default () => <Foo title="First Demo" />;
 ```
-
-
