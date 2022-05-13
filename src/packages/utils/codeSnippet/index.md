@@ -1,11 +1,6 @@
 ---
 nav:
   path: /utils
-order: 1
-group:
-  path: /tools
-  title: 常用工具
-  order: 1
 ---
 
 # 常用代码片段
@@ -30,7 +25,3 @@ function typeOf(obj) {
   return map[Object.prototype.toString.call(obj)];
 }
 ```
-
-## 沟通神器 gif
-
-https://www.screentogif.com/
