@@ -30,6 +30,17 @@ export default defineConfig({
       ],
     },
   ],
+  extraBabelPlugins: [
+    [
+      'babel-plugin-import',
+      {
+        libraryName: 'antd',
+        libraryDirectory: 'es',
+        style: true,
+      },
+      'antd',
+    ],
+  ],
 
   // '/guide': [
   //   {

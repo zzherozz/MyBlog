@@ -7,7 +7,7 @@ describe('<Foo />', () => {
   it('render Foo with dumi', () => {
     const msg = 'dumi';
 
-    render(<Foo title={msg} />);
+    render(<Foo />);
     expect(screen.queryByText(msg)).toBeInTheDocument();
   });
 });
