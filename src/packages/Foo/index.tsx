@@ -13,15 +13,14 @@ const App: React.FC = () => {
   };
   useEffect(() => {
     setLoding(true);
-    form.setFieldsValue({ username: 'admin1', password: 'admin2' });
+    form.setFieldsValue({ username: 'admin1', password: 'admin1' });
+    console.log('数据：', form.getFieldsValue(true));
+  }, []);
+  useEffect(() => {
     setTimeout(() => {
       setLoding(false);
     }, 3000);
-    // setTimeout(()=>{
-    //     form.setFieldsValue({username:'admin1',password:'admin2'})
-    // },0)
-    console.log('数据：', form.getFieldsValue(true));
-  }, [form]);
+  }, []);
   return (
     <>
       {loding ? (
@@ -41,6 +40,7 @@ const App: React.FC = () => {
             label="Username"
             name="username"
             rules={[{ required: true, message: 'Please input your username!' }]}
+            initialValue={'admin3'}
           >
             <Input />
           </Form.Item>
