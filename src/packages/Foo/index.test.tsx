@@ -6,7 +6,6 @@ import Foo from './index';
 describe('<Foo />', () => {
   it('render Foo with dumi', () => {
     const msg = 'dumi';
-
     render(<Foo />);
     expect(screen.queryByText(msg)).toBeInTheDocument();
   });

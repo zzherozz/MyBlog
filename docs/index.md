@@ -1,10 +1,10 @@
 ---
 hero:
-  title: lalll
-  desc: myblog site example
+  title: 努力干饭的小胖子
+  desc: 人就是这样， 宁愿吃生活的苦，也不愿吃学习的苦，当你随着年纪的增长， 一无所成时才会发现， 只有知识才能充盈你的世界，不间断的学习才能给自己安全感，无论海角天涯，只此心安及是家。
   actions:
     - text: Getting Started
-      link: /guide/packages/foo
+      link: /daily-record
 features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/881dc458-f20b-407b-947a-95104b5ec82b/k79dm8ih_w144_h144.png
     title: Feature 1
@@ -17,4 +17,3 @@ features:
     desc: Balabala
 footer: Open-source MIT Licensed | Copyright © 2020<br />Powered by [dumi](https://d.umijs.org)
 ---
-

@@ -41,6 +41,10 @@ export default defineConfig({
       'antd',
     ],
   ],
+  theme: {
+    // 修改 dumi 默认主题的主色，更多变量详见：https://github.com/umijs/dumi/blob/master/packages/theme-default/src/style/variables.less
+    '@primary-color': '#1790e4',
+  },
 
   // '/guide': [
   //   {

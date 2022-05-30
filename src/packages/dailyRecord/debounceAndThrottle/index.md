@@ -23,7 +23,7 @@ function debounce(func, wait) {
   let timer = null;
   return function () {
     if (timer) clearTimeout(timer);
-    timer = setTimeOut(function () {
+    timer = setTimeout(function () {
       func.apply(context, args);
     }, wait);
   };
@@ -38,9 +38,9 @@ function debounce(func, wait) {
   const context = this;
   let timer = null;
   return function () {
-    if (timer) clearTimeOut(timer);
+    if (timer) clearTimeout(timer);
     let callNow = !timer;
-    timer = setTimeOut(() => {
+    timer = setTimeout(() => {
       timer = null;
     }, wait);
     if (callNow) func.apply(context, args);
@@ -61,17 +61,17 @@ const debounce = (func, wait, immediate = false) => {
   let timer, result;
   let debounced = function () {
     const args = arguments;
-    if (timer) clearTimeOut(timer);
+    if (timer) clearTimeout(timer);
     if (immediate) {
       let callNow = !timer;
-      timer = setTimeOut(() => {
+      timer = setTimeout(() => {
         timer = null;
       }, wait);
       // 立即执行
       if (callNow) result = func.apply(this, args);
     } else {
       // 非立即执行
-      timer = setTimeOut(() => {
+      timer = setTimeout(() => {
         func.apply(this, args);
       }, wait);
     }
@@ -82,5 +82,86 @@ const debounce = (func, wait, immediate = false) => {
     timeout = null;
   };
   return debounced;
+};
+```
+
+### 节流（throttle）
+
+举个栗子：比如一个持续流水的水龙头，水龙头开到最大的时候很浪费水资源，将水龙头开得小一点，让他每隔 200 毫秒流出一滴水，这样能源源不断的流出水而又不浪费。而节流就是每隔 n 的时间调用一次函数，而不是一触发事件就调用一次，这样就会减少资源浪费。像 dom 的拖拽或者滚动事件这种，就是常见的使用节流的栗子。
+
+时间戳版： 时间戳版的函数触发是在时间段内开始的时候。定时器版本：定时器版的函数触发是在时间段内结束的时候。
+
+时间戳版本：
+
+```jsx | pure
+function throttle(func, wait) {
+  let temp = 0; // 这玩意存在闭包,所以只声明了一次。
+  return function () {
+    const now = Date.now();
+    const context = this;
+    const args = arguments;
+    if (now - temp > wait) {
+      func.apply(context, args);
+      temp = now;
+    }
+  };
+}
+```
+
+定时器版本：
+
+```jsx | pure
+function throttle(func, wait) {
+  const timer = null;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!timer) {
+      timer = setTimeout(() => {
+        func.apply(context, args);
+        timer = null;
+      }, wait);
+    }
+  };
+}
+```
+
+结合版本：
+
+```jsx | pure
+/**
+ * @name: throttle  节流函数 在规定的时间间隔，重复触发函数，只有一次是成功调用
+ * @param {fun} 需要节流的函数
+ * @param {delay} 期望多长时间内调用一次
+ */
+function throttle(func, wait) {
+  let last, timer;
+  return function (args) {
+    const context = this;
+    const now = Date.now();
+    if (last && now < last + delay) {
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        fun.call(context, args);
+      }, delay);
+    } else {
+      last = now;
+      fun.call(that, args);
+    }
+  };
+}
+```
+
+题外话：防抖 hooks
+
+```jsx | pure
+// 防抖
+export const useDebounce = (fn, delay, dep: any = []) => {
+  useEffect(() => {
+    let timer: any = null;
+    timer = setTimeout(fn, delay);
+    return () => clearTimeout(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [...dep]);
 };
 ```
