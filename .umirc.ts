@@ -25,7 +25,6 @@ export default defineConfig({
         { title: '日常记录', path: '/daily-record' },
         { title: 'leetCode每周迷惑行为', path: '/leet-code' },
         { title: 'JS头秃学习中', path: '/js' },
-        { title: 'React学习指南', path: '/react' },
         { title: '工具类', path: '/utils' },
       ],
     },
