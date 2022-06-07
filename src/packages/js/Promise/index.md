@@ -4,7 +4,7 @@ nav:
   path: /js
 ---
 
-## Foo
+## Promise 对象
 
 Demo:
 
