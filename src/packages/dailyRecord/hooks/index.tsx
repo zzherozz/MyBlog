@@ -1,13 +1,13 @@
 import React, { useReducer, createContext } from 'react';
 
 type FatherProps = {
-  name: String;
+  name: string;
 };
 type childrenAgeProps = {
-  age: Number;
+  age: number;
 };
 type childrenSexProps = {
-  sex: String;
+  sex: string;
 };
 export const ChildrenAge: React.FC<childrenAgeProps> = ({ age }) => {
   return <span>{age}</span>;
