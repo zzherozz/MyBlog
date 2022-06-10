@@ -4,7 +4,7 @@ nav:
   path: /daily-record
 ---
 
-## hooks 学习
+## hooks 状态管理
 
 Demo:
 

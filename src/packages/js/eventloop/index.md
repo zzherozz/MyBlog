@@ -1,7 +1,7 @@
 ---
 nav:
   title: Components
-  path: /daily-record
+  path: /js
 ---
 
 ## eventLoop 事件循环
