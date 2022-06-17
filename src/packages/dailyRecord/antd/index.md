@@ -1,18 +1,18 @@
 ---
 nav:
   title: Components
-  path: /ts
+  path: /daily-record
 ---
 
-## Promise 对象
+## antd 中 select 获取其他值
 
 Demo:
 
 ```tsx
 import React from 'react';
-import { Foo } from 'myblog';
+import SelectDemo from './demo1.jsx';
 
-export default () => <Foo title="First Demo" />;
+export default () => <SelectDemo />;
 ```
 
 More skills for writing demo: https://d.umijs.org/guide/basic#write-component-demo

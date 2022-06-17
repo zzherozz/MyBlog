@@ -4,7 +4,9 @@ nav:
   path: /daily-record
 ---
 
-## 触底加载 list
+## 触底加载 list 使用 ahooks
+
+### 地址https://ahooks.js.org/zh-CN/
 
 Demo:
 
@@ -37,7 +39,7 @@ Demo:
 
 ```tsx
 import React from 'react';
-import VirtuaList from './index copy.jsx';
+import VirtuaList from './demo.jsx';
 
 export default () => <VirtuaList name="First Demo" />;
 ```
