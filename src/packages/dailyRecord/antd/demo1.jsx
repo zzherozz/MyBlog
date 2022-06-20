@@ -37,7 +37,6 @@ const SelectDemo = () => {
           ))}
         </Select>
       </Form.Item>
-      <Button onClick={handleOk}>确定</Button>
     </Form>
   );
 };
