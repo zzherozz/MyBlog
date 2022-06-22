@@ -112,7 +112,7 @@ function throttle(func, wait) {
 
 ```jsx | pure
 function throttle(func, wait) {
-  const timer = null;
+  let timer = null;
   return function () {
     const args = arguments;
     const context = this;

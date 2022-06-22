@@ -11,6 +11,5 @@ nav:
 ```tsx
 import React from 'react';
 import SelectDemo from './demo1.jsx';
-
 export default () => <SelectDemo />;
 ```
