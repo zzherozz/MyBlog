@@ -41,7 +41,7 @@ createAudioFileAsync(audioSettings, successCallback, failureCallback);
 有点二：常说的避免回调地狱问题（得益于 promise 对象的链式调用） demo2：
 
 ```jsx | pure
-// 比如一个常见的需求获取数据A,通过A获取数据B
+// 比如一个常见的需求获取数据A,通过A获取数据B,通过B返回的数据获取C这种依此嵌套问题
 
 // 使用promise方式
 doSomething()
