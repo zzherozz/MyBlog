@@ -166,7 +166,7 @@ export const useDebounce = (fn, delay, dep: any = []) => {
 };
 ```
 
-题外话+1 ： 返回 promise 的防抖
+题外话+1 ： 返回 promise 的防抖,Promise.race 的应用
 
 ```jsx | pure
 const abortPromise = (promise) => {
