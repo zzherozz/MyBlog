@@ -140,8 +140,8 @@ async function foo() {
       if (self.callbacks.length) {
         // 放在异步队列里面执行。（这里只是模拟异步，实际的promise不是使用延时函数，延时函数是一个宏任务）
         setTimeout(() => {
-          self.callbacks.forEach(({ onResolved }) => {
-            onResolved(reason);
+          self.callbacks.forEach(({ onRejected }) => {
+            onRejected(reason);
           });
         }, 0);
       }
@@ -154,6 +154,13 @@ async function foo() {
   }
   Promise.prototype.then = function (onResolved, onRejected) {
     const self = this;
+    onRejected =
+      typeof onRejected === 'function'
+        ? onRejected
+        : (reason) => {
+            throw reason;
+          }; // 失败向下传递
+    onResolved = typeof onResolved === 'function' ? onResolved : (value) => value; // 失败向下传递
     return new Promise((resolve, reject) => {
       function handle(callback) {
         try {
@@ -194,6 +201,41 @@ async function foo() {
       }
     });
   };
+
+  Promise.prototype.catch = function (onRejected) {
+    return this.then(undefined, onRejected);
+  };
+
+  Promise.resolve = function (value) {
+    return new Promise((resolve, reject) => {
+      if (value instanceof Promise) {
+        value.then(resolve, reject);
+      } else {
+        resolve(value);
+      }
+    });
+  };
+  Promise.race = function (promises) {
+    return new Promise((resolve, reject) => {
+      promises.forEach((p) => {
+        p.then(resolve, reject);
+      });
+    });
+  };
+  Promise.all = function (promises) {
+    return new Promise((resolve, reject) => {
+      let promisesCount = 0;
+      const arr = [];
+      promises.forEach((p, index) => {
+        p.then((value) => {
+          promisesCount++;
+          arr[index] = value;
+          if (promisesCount === promises?.length) resolve(value); // 都成功
+        }, reject);
+      });
+    });
+  };
+
   window.Promise = Promise;
 })(window);
 ```

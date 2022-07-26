@@ -9,17 +9,27 @@
 </head>
 
 <body>
-  <script src="./index.js"></script>
+  <!-- <script src="./index.js"></script> -->
   <script>
-    new Promise((resolve, reject) => {
-        resolve(1)
-        debugger
-    }).then(
-      value => { console.log('成功回调onResolved:', value)},
-      reason => {console.log('失败回调onRejected:', reason)})
-      .then(
-      value => {console.log('成功回调onResolved2:', value)}, 
-      reason => {console.log('失败回调onRejected2:', reason)})
+    const p1 = new Promise((resolve, reject) => {
+      reject(1)
+    })
+    const p2 = new Promise((resolve, reject) => {
+      
+      setTimeout(() => (resolve(555)),500)
+    })
+    const p3 = new Promise((resolve, reject) => {
+      reject(3)
+    })
+    const p4 = new Promise((resolve, reject) => {
+      throw 4
+    })
+    const all = Promise.any([p1, p2,p3,p4])
+    console.log('all', all,);
+    setTimeout(() => {
+      all.then(value=>(console.log(value)),value=>(console.log(value,'<<')))
+      console.log('all', all,);
+    },2000)
 
   </script>
 </body>
