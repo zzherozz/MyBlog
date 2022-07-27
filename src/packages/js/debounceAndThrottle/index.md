@@ -1,7 +1,7 @@
 ---
 nav:
   title: Components
-  path: /daily-record
+  path: /js
 ---
 
 ## 防抖（debounce）与 节流（throttle）
@@ -203,4 +203,14 @@ export const debouncePromise = (fun, time) => {
     );
   };
 };
+```
+
+### 实际工作
+
+方式一：由于 hooks 重绘问题，会导致 timer 失效，每次都会重置。可以使用 useMemo 将函数缓存起来。（注意：这里防抖函数没使用缓存，看效果是生效，但实际打印会发现 timer 依然是不可靠的，这里会发现 debounce2 的 timer 一直在重置，这里就失去了我们使用闭包做防抖是意义）
+
+```tsx
+import React from 'react';
+import Demo from './demo.jsx';
+export default () => <Demo />;
 ```
