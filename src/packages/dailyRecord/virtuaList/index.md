@@ -4,7 +4,7 @@ nav:
   path: /daily-record
 ---
 
-## 触底加载 list 使用 ahooks
+## 触底加载 list
 
 ### 地址https://ahooks.js.org/zh-CN/
 
