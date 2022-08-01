@@ -25,3 +25,20 @@ function typeOf(obj) {
   return map[Object.prototype.toString.call(obj)];
 }
 ```
+
+### list -> tree
+
+```jsx | pure
+export const getChildrenList = (data) => {
+  const info = data.reduce((pre, node) => {
+    return (pre[node.id] = node), (node.children = []), pre;
+  }, {});
+  const arr = data.filter((node) => {
+    if (info[node.pid]) {
+      info[node.pid].children.push(node);
+    }
+    return !node.pid;
+  });
+  return arr;
+};
+```
