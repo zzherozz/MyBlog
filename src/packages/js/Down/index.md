@@ -6,7 +6,7 @@ nav:
 
 ### 文件的上传和下载
 
-笔记中涉及的内容，参考[二进制](https://juejin.cn/post/7046313942938812424/),[前端上传与下载](https://juejin.cn/post/7074869887759286280),[文件下载](https://juejin.cn/post/6989413354628448264#heading-6)个人觉得这三篇文章讲的很好，所以跟着学习一遍。
+笔记中涉及的内容，参考[二进制](https://juejin.cn/post/7046313942938812424/),[前端上传与下载](https://juejin.cn/post/7074869887759286280),[文件下载，搞懂这 9 种场景就够了](https://juejin.cn/post/6989413354628448264#heading-6)个人觉得这三篇文章讲的很好，所以跟着学习一遍。 ![下载学习思维导图](./%E5%89%8D%E7%AB%AF%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%A0%BC%E5%BC%8F.png)
 
 ### 文件下载
 
@@ -73,6 +73,27 @@ export const downloadFile = async (params, fileName) => {
   // 释放内存 --清除方式只有页面unload()事件或者使用URL.revokeObjectURL(objectURL)手动清除 。
   window.URL.revokeObjectURL(a.href);
   document.body.removeChild(a);
+};
+```
+
+```jsx | pure
+export const downloadFile = (url) => {
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', url, true);
+  xhr.responseType = 'blob';
+  xhr.onload = function (oEvent) {
+    const content = xhr.response;
+    const aTag = document.body.createElement('a');
+    aTag.download = '360_0388.jpg';
+    const blob = new Blob([content]);
+    const blobUrl = URL.createObjectURL(blob);
+    aTag.href = blobUrl;
+    aTag.click();
+    URL.revokeObjectURL(blob);
+    document.body.removeChild(elink);
+    console.timeEnd('直接下载');
+  };
+  req.send();
 };
 ```
 
@@ -147,3 +168,7 @@ const download = () => {
   });
 };
 ```
+
+### 大文件下载
+
+参考文章[文件下载，搞懂这 9 种场景就够了](https://juejin.cn/post/6989413354628448264#heading-17) 参考文章[大文件下载](https://mp.weixin.qq.com/s/E4SdYEkEzurfrnJrBu3bjA)

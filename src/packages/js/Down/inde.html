@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大文件分块下载示例</title>
+    <script src="./download.js"></script>
+  </head>
+  <body>
+    <div>
+      <h3>大文件分块下载示例</h3>
+      <img src="./n.jpg" width="640" height="360">
+    </div>
+    <button onclick="chunkDownload()">下载</button>
+    <script>
+      const fileUrl ="http://127.0.0.1:5501/src/packages/js/Down/n.jpg";
+      function chunkDownload() {
+        console.log("大文件下载开始: " + +new Date());
+        download({
+          url: fileUrl,
+          chunkSize: 0.1 * 1024 * 1024,
+          poolLimit: 6,
+        }).then((buffers) => {
+          console.log("大文件下载结束: " + +new Date());
+          saveAs({ buffers, name: "books.png", mime: "image/png" });
+        });
+      }
+    </script>
+  </body>
+</html>

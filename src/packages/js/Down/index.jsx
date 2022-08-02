@@ -102,6 +102,27 @@ export const Demo5 = () => {
   };
   return <span onClick={download}>点击下载zip</span>;
 };
+
+// 大文件下载对比（单线程下载和多线程下载）
+//单线程
+function download(url) {
+  const req = new XMLHttpRequest();
+  req.open('GET', url, true);
+  req.responseType = 'blob';
+  req.onload = function (oEvent) {
+    const content = req.response;
+    const aTag = document.createElement('a');
+    aTag.download = '360_0388.jpg';
+    const blob = new Blob([content]);
+    const blobUrl = URL.createObjectURL(blob);
+    aTag.href = blobUrl;
+    aTag.click();
+    URL.revokeObjectURL(blob);
+    console.timeEnd('直接下载');
+  };
+  req.send();
+}
+
 // 本地图片转base64，注意链接是本地链接不能是网络地址。
 export const img2base64 = (imgUrl) => {
   let image = new Image();
