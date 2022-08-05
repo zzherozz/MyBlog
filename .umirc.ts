@@ -44,19 +44,4 @@ export default defineConfig({
     // 修改 dumi 默认主题的主色，更多变量详见：https://github.com/umijs/dumi/blob/master/packages/theme-default/src/style/variables.less
     '@primary-color': '#1790e4',
   },
-
-  // '/guide': [
-  //   {
-  //     title: '菜单项',
-  //     path: '菜单路由（可选）',
-  //     // children: [
-  //     //   // 菜单子项（可选）
-  //     //   'guide/index.md', // 对应的 Markdown 文件，路径是相对于 resolve.includes 目录识别的
-  //     // ],
-  //   },
-  // ],
-  // resolve:{
-  //   includes:['docs', 'packages/pkg/src']
-  // }
-  // more config: https://d.umijs.org/config
 });
