@@ -73,11 +73,11 @@
       }
       if (self.status === RESOLVED) {
         setTimeout(() => {
-          handle(onResolved);
+          handle(onResolved); // 成功的回调
         }, 0);
       } else if (self.status === REJECTED) {
         setTimeout(() => {
-          handle(onRejected);
+          handle(onRejected); // 失败的回调
         }, 0);
       } else {
         self.callbacks.push(
