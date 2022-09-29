@@ -275,3 +275,40 @@ function Article({ id }) {
   // ...
 }
 ```
+
+### useEffect 执行条件
+
+1.当数组里面的值是基础类型时,直接对比值是否相等。 2.当数组里面的值是引用类型时,直接引用值的地址是否相等。总结来看：react 比较 props 和 state 的时候使用的是全等比较。
+
+```jsx
+import React from 'react';
+import TestUseEffectDemo from './useEffect.jsx';
+export default () => (
+  <>
+    <TestUseEffectDemo />
+  </>
+);
+```
+
+### useRef
+
+1.useRef 返回一个可变的 ref 对象，其 current 属性被初始化为传入的参数。<br> 2.useRef 当中的值发生了变化但是不会触发组件的渲染 <br> 3.与 useState 的区别在于 useState 创建的对象，在每个重新渲染过程内都是独立的而 useRef 是共享的,因此我们可以通过使用 useRef 拿到最新的值
+
+### useMemo 和 useCallback
+
+1.用于缓存函数，避免重复渲染,可以用于性能优化。<br> 2.useCallback 创建时（渲染页面）不去执行里面的函数,useMemo 创建时（渲染页面）会执行一次.
+
+```jsx | pure
+useCallback(cb, []); // 返回函数
+useMemo(() => cb, []); // 返回结果
+```
+
+```jsx
+import React from 'react';
+import TestDemo from './uesMemoAndUseCallback.jsx';
+export default () => (
+  <>
+    <TestDemo />
+  </>
+);
+```
