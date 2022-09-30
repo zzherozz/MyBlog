@@ -46,3 +46,11 @@ import React from 'react';
 import { FileReaderDemo } from './index.jsx';
 export default () => <FileReaderDemo />;
 ```
+
+#### csv 文件上传 demo
+
+```tsx
+import React from 'react';
+import { Demo2 } from './index.jsx';
+export default () => <Demo2 />;
+```

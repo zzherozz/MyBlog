@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import JSZip from 'JSZip';
 import styles from './index.module.less';
+import csv2json from 'csvjson-csv2json';
+
 // 模拟后端返回 blob
 export const Demo1 = () => {
   // 单文件上传
@@ -167,6 +169,7 @@ export const Demo1 = () => {
 
 export const FileReaderDemo = () => {
   const uploaderFile = (file) => {
+    console.log(file, 'file');
     const oFileReader = new FileReader(); // 创建一个FileReader对象
     const oPreview = document.getElementById('file-img'); // 预览图
     oFileReader.onload = function (event) {
@@ -193,7 +196,39 @@ export const FileReaderDemo = () => {
       <input
         type="file"
         className="file-upload"
-        accept="image/png,image/gif,image/jpeg,image/bmp"
+        accept="csv"
+        name="file"
+        onChange={(e) => {
+          uploaderFile(e.target.files);
+        }}
+      />
+    </div>
+  );
+};
+
+// 利用FileReader读取上传文件
+
+export const Demo2 = () => {
+  const uploaderFile = (file) => {
+    console.log(file, 'file');
+    const oFileReader = new FileReader(); // 创建一个FileReader对象
+    oFileReader.readAsText(file[0], 'UTF-8');
+    const oPreview = document.getElementById('file-img'); // 预览图
+    oFileReader.onload = function (event) {
+      console.log('event', event);
+      oPreview.innerHTML = event.target.result;
+      console.log('event.target.result', event.target.result);
+      const json = csv2json(event.target.result, { parseNumbers: true });
+      console.log(json);
+    };
+  };
+  return (
+    <div className="file-reader-demo">
+      <div id="file-img" />
+      <input
+        type="file"
+        className="file-upload"
+        accept="csv"
         name="file"
         onChange={(e) => {
           uploaderFile(e.target.files);
