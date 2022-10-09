@@ -9,12 +9,12 @@ export const Demo1 = () => {
     form.setFieldsValue({
       attributes: [
         {
-          property: '授权状态1',
-          attribute: '联系方式当前授权状态2',
+          property: '33333333',
+          attribute: '5555555555',
         },
         {
-          property: '授权状态3',
-          attribute: '联系方式当前授权状态3',
+          property: '6666666666',
+          attribute: '7777777777',
         },
       ],
     });
@@ -22,7 +22,7 @@ export const Demo1 = () => {
   const renderColumns = (add, remove) => {
     const columns = [
       {
-        title: '属性',
+        title: '名称',
         dataIndex: 'property',
         key: 'property',
         render: (text, record, index) => {
@@ -34,7 +34,7 @@ export const Demo1 = () => {
         },
       },
       {
-        title: '数据映射',
+        title: '描述',
         dataIndex: 'attribute',
         key: 'attribute',
         render: (text, record, index) => {
@@ -85,19 +85,19 @@ export const Demo2 = () => {
     form.setFieldsValue({
       attributes: [
         {
-          property: '授权状态1',
-          attribute: '联系方式当前授权状态2',
+          property: '3333333333',
+          attribute: '555555555555',
         },
         {
-          property: '授权状态3',
-          attribute: '联系方式当前授权状态3',
+          property: '3333',
+          attribute: '77777777',
         },
       ],
     });
   }, []);
   const columns = [
     {
-      title: '属性',
+      title: '名称',
       dataIndex: 'property',
       key: 'property',
       render: (text, record, index) => {
@@ -117,7 +117,7 @@ export const Demo2 = () => {
       },
     },
     {
-      title: '数据映射',
+      title: '描述',
       dataIndex: 'attribute',
       key: 'attribute',
       render: (text, record, index) => {
