@@ -6,7 +6,7 @@ nav:
 
 ## hooks 学习
 
-### useState
+## useState
 
 ### useState 两种使用方式
 
@@ -115,11 +115,11 @@ export const useStateSetWitchRef = (initValue) => {
 };
 ```
 
-### useEffect
+## useEffect
 
 [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
 
-#### 执行时机：
+### 执行时机
 
 1.默认情况下，effect 将在每轮渲染结束后执行，但你可以选择让它在只有某些值改变的时候才执行。<br> 2.可以相当于(约等于) componentDidMount 和 componentDidUpdate<br> 3.useEffect 中 return 一个函数的时候，相当于 componentWillUnMount<br> 4.存在多个时，每个 useEffect 都会触发,useEffect 的执行顺序与它代码书写的顺序是一致的<br>
 
@@ -290,13 +290,13 @@ export default () => (
 );
 ```
 
-### useRef
+## useRef
 
 1.useRef 返回一个可变的 ref 对象，其 current 属性被初始化为传入的参数。<br> 2.useRef 当中的值发生了变化但是不会触发组件的渲染 <br> 3.与 useState 的区别在于 useState 创建的对象，在每个重新渲染过程内都是独立的而 useRef 是共享的,因此我们可以通过使用 useRef 拿到最新的值
 
-### useMemo 和 useCallback
+## useMemo 和 useCallback
 
-1.用于缓存函数，避免重复渲染,可以用于性能优化。<br> 2.useCallback 创建时（渲染页面）不去执行里面的函数,useMemo 创建时（渲染页面）会执行一次.
+1.用于缓存函数，避免重复渲染,可以用于性能优化。<br> 2.useCallback 创建时（渲染页面）不去执行里面的函数,useMemo 创建时（渲染页面）会执行一次. 3.useCallback 需要配合 React.memo 才能达到优化效果
 
 ```jsx | pure
 useCallback(cb, []); // 返回函数
@@ -313,4 +313,72 @@ export default () => (
 );
 ```
 
-### useReducer
+## useReducer 和 useContext 实现简易状态管理
+
+思路:<br> 1.创建全局的 Context<br> 2.创建全局的 Reducer<br> 3.将全局 useReducer 返回的 state 和 dispatch 传递给全局 Context.Provider 的 value 中<br> 4.用全局构建好的带有 Context 的组件包裹应用根组件<br>
+
+举个栗子：
+
+```jsx
+import React from 'react';
+import Parent from './useContextAnduseReducer.jsx';
+export default () => (
+  <>
+    <Parent />
+  </>
+);
+```
+
+## useImperativeHandle
+
+useImperativeHandle 可以让父组件获取并执行子组件内某些自定义函数(方法)。本质上其实是子组件将自己内部的函数(方法)通过 useImperativeHandle 添加到父组件中 useRef 定义的对象中。<br> 注意：一般情况是不需要父组件执行子组件的方法的，一定要使用前，请想清楚。<br> 步骤：<br> 1、useRef 创建引用变量<br> 2、React.forwardRef 将引用变量分发给子组件<br> 3、useImperativeHandle 将子组件内定义的函数作为属性，添加到父组件中的 ref 对象上。<br>
+
+父组件：
+
+```jsx | pure
+import React, { useRef } from 'react';
+import ChildComponent from './childComponent';
+
+function Imperative() {
+  const childRef = useRef(null); //父组件定义一个对子组件的引用
+
+  const clickHandle = () => {
+    childRef.current.addCount(); //父组件调用子组件内部 addCount函数
+  };
+
+  return (
+    <div>
+      {/* 父组件通过给子组件添加 ref 属性，将childRef传递给子组件，
+            子组件获得该引用即可将内部函数添加到childRef中 */}
+      <ChildComponent ref={childRef} />
+      <button onClick={clickHandle}>child component do somting</button>
+    </div>
+  );
+}
+export default Imperative;
+```
+
+子组件：
+
+```jsx | pure
+import React, { useState, useImperativeHandle } from 'react';
+
+function ChildComponent(props, ref) {
+  const [count, setCount] = useState(0); //子组件定义内部变量count
+  //子组件定义内部函数 addCount
+  const addCount = () => {
+    setCount(count + 1);
+  };
+  //子组件通过useImperativeHandle函数，将addCount函数添加到父组件中的ref.current中
+  useImperativeHandle(ref, () => ({ addCount }));
+  return (
+    <div>
+      {count}
+      <button onClick={addCount}>child</button>
+    </div>
+  );
+}
+
+//子组件导出时需要被React.forwardRef包裹，否则无法接收 ref这个参数
+export default React.forwardRef(ChildComponent);
+```
