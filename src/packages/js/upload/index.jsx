@@ -25,7 +25,7 @@ export const Demo1 = () => {
     const files = uploadFileEle.files;
     console.log(uploadFileEle, 'uploadFileEle', files);
 
-    let formData = new FormData();
+    const formData = new FormData();
     Object.values(files).forEach((file, i) => {
       formData.append('file' + i, file);
     });
@@ -34,7 +34,7 @@ export const Demo1 = () => {
   };
 
   // 压缩文件
-  function generateZipFile(zipName, files, options = { type: 'blob', compression: 'DEFLATE' }) {
+  const generateZipFile = (zipName, files, options = { type: 'blob', compression: 'DEFLATE' }) => {
     return new Promise((resolve, reject) => {
       // 创建 JSZip 对象
       const zip = new JSZip();
@@ -51,7 +51,7 @@ export const Demo1 = () => {
         resolve(zipFile);
       });
     });
-  }
+  };
   const upload4 = async () => {
     // 获取上传的input元素
     const uploadFileEle = document.querySelector('#uploadFile4');
