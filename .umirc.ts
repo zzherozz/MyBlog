@@ -10,24 +10,19 @@ export default defineConfig({
   outputPath: 'docs-dist',
   mode: 'site',
   hash: true,
-  exportStatic: {}, // 将所有路由输出伟html目录结构
+  exportStatic: {}, // 将所有路由输出html目录结构
   navs: [
     // null, // null 值代表保留约定式生成的导航，只做增量配置
+    // {
+    //   title: 'GitHub',
+    //   path: 'https://github.com/umijs/dumi',
+    // },
     {
-      title: 'GitHub',
-      path: 'https://github.com/umijs/dumi',
+      title: '前端',
+      path: '/js',
     },
-    {
-      title: '胖子的代码生涯',
-      // path: '链接是可选的',
-      // 可通过如下形式嵌套二级导航菜单，目前暂不支持更多层级嵌套：
-      children: [
-        { title: '日常记录', path: '/daily-record' },
-        // { title: 'leetCode每周迷惑行为', path: '/leet-code' },
-        { title: 'JS头秃学习中', path: '/js' },
-        { title: '工具类', path: '/utils' },
-      ],
-    },
+    { title: '日常踩坑笔记', path: '/daily-record' },
+    { title: '工具类', path: '/utils' },
   ],
   extraBabelPlugins: [
     [

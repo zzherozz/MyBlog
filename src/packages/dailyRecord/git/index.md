@@ -6,6 +6,8 @@ nav:
 
 ## git 使用笔记
 
+### 如何添加 git 忽略文件 .gitignore 文件
+
 ### github 配置 ssh key
 
 第一步：检查本地主机是否已经存在 ssh key <br>
