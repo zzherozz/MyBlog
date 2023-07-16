@@ -1,5 +1,4 @@
 import axios from 'axios';
-import Cookies from 'js-cookie';
 const defaultConfig = {
   timeout: 30000,
   headers: {
