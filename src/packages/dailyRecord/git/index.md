@@ -6,11 +6,11 @@ nav:
 
 ## git 使用笔记
 
-### 如何添加 git 忽略文件 .gitignore 文件
+<!-- ### 如何添加 git 忽略文件 .gitignore 文件 -->
 
 ### github 配置 ssh key
 
-第一步：检查本地主机是否已经存在 ssh key <br>
+- 第一步：检查本地主机是否已经存在 ssh key <br>
 
 ```jsx | pure
 cd ~/.ssh
@@ -18,18 +18,20 @@ ls
 //看是否存在 id_rsa 和 id_rsa.pub文件，如果存在，说明已经有SSH Key
 ```
 
-![](./Snipaste_2022-10-09_15-48-34.png)<br> 第二步：如果有直接跳转到第三步;如果没得,使用命令生成 ssh key,生成完以后再用第一步命令，查看 ssh key <br>
+![](./Snipaste_2022-10-09_15-48-34.png)<br>
+
+- 第二步：如果有直接跳转到第三步;如果没得,使用命令生成 ssh key,生成完以后再用第一步命令，查看 ssh key <br>
 
 ```jsx | pure
 ssh-keygen -t rsa -C "xxx@xxx.com"
 //执行后一直回车即可
 ```
 
-第三步：获取 ssh key 公钥内容（id_rsa.pub）<br> ![](./Snipaste_2022-10-09_15-57-14.png)
+- 第三步：获取 ssh key 公钥内容（id_rsa.pub）<br> ![](./Snipaste_2022-10-09_15-57-14.png)
 
-第四步：Github 账号上添加公钥<br> ![](./Snipaste_2022-10-09_16-14-46.png)
+- 第四步：Github 账号上添加公钥<br> ![](./Snipaste_2022-10-09_16-14-46.png)
 
-第四步：验证是否设置成功<br>
+- 第四步：验证是否设置成功<br>
 
 ```jsx | pure
 
@@ -44,6 +46,14 @@ ssh -T git@github.com
 ```jsx | pure
 
 git remote set-url origin xxx.git
+
+```
+
+### 如何将本地仓库推送两个远端
+
+```jsx | pure
+
+git remote add new-origin xxx.git
 
 ```
 
