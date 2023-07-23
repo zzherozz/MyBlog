@@ -1,4 +1,4 @@
----
+<!-- ---
 nav:
   title: Components
   path: /daily-record
@@ -10,4 +10,4 @@ nav:
 import { Demo } from 'myblog';
 import React from 'react';
 export default () => <Demo></Demo>;
-```
+``` -->
