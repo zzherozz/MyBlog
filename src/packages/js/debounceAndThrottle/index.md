@@ -18,10 +18,10 @@ nav:
 
 ```jsx | pure
 function debounce(func, wait) {
-  const args = arguments;
   const context = this;
   let timer = null;
   return function () {
+    const args = arguments;
     if (timer) clearTimeout(timer);
     timer = setTimeout(function () {
       func.apply(context, args);
@@ -34,10 +34,10 @@ function debounce(func, wait) {
 
 ```jsx | pure
 function debounce(func, wait) {
-  const args = arguments;
   const context = this;
   let timer = null;
   return function () {
+    const args = arguments;
     if (timer) clearTimeout(timer);
     let callNow = !timer;
     timer = setTimeout(() => {
