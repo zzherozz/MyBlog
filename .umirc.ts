@@ -18,6 +18,10 @@ export default defineConfig({
     //   path: 'https://github.com/umijs/dumi',
     // },
     {
+      title: 'JavaScript 系列',
+      path: '/JavaScript',
+    },
+    {
       title: '前端',
       path: '/js',
     },
