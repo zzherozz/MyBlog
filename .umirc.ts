@@ -21,10 +21,6 @@ export default defineConfig({
       title: 'JavaScript 系列',
       path: '/JavaScript',
     },
-    {
-      title: '前端',
-      path: '/js',
-    },
     { title: '日常踩坑笔记', path: '/daily-record' },
     { title: '工具类', path: '/utils' },
   ],

@@ -1,10 +1,10 @@
 ---
 nav:
   title: Components
-  path: /js
+  path: /JavaScript
 ---
 
-### 文件的上传
+### JavaScript-文件的上传
 
 ![](./%E5%89%8D%E7%AB%AF%E4%B8%8A%E4%BC%A0.png)
 

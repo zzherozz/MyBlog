@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import JSZip from 'JSZip';
-import styles from './index.module.less';
 import csv2json from 'csvjson-csv2json';
+import JSZip from 'JSZip';
+import React, { useEffect } from 'react';
+import styles from './index.module.less';
 
 // 模拟后端返回 blob
 export const Demo1 = () => {
