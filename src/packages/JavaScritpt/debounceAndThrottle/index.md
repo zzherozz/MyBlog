@@ -1,10 +1,10 @@
 ---
 nav:
   title: Components
-  path: /js
+  path: /JavaScript
 ---
 
-## 防抖（debounce）与 节流（throttle）
+## JavaScript-防抖（debounce）与 节流（throttle）
 
 节流与防抖的前提都是某个行为持续地触发，不同之处只要判断是要优化到减少它的执行次数（节流）还是只执行一次就行（防抖）。
 
@@ -18,10 +18,10 @@ nav:
 
 ```jsx | pure
 function debounce(func, wait) {
-  const context = this;
   let timer = null;
   return function () {
     const args = arguments;
+    const context = this;
     if (timer) clearTimeout(timer);
     timer = setTimeout(function () {
       func.apply(context, args);
@@ -34,10 +34,10 @@ function debounce(func, wait) {
 
 ```jsx | pure
 function debounce(func, wait) {
-  const context = this;
   let timer = null;
   return function () {
     const args = arguments;
+    const context = this;
     if (timer) clearTimeout(timer);
     let callNow = !timer;
     timer = setTimeout(() => {
@@ -61,6 +61,7 @@ const debounce = (func, wait, immediate = false) => {
   let timer, result;
   let debounced = function () {
     const args = arguments;
+    const context = this;
     if (timer) clearTimeout(timer);
     if (immediate) {
       let callNow = !timer;
@@ -68,11 +69,11 @@ const debounce = (func, wait, immediate = false) => {
         timer = null;
       }, wait);
       // 立即执行
-      if (callNow) result = func.apply(this, args);
+      if (callNow) result = func.apply(context, args);
     } else {
       // 非立即执行
       timer = setTimeout(() => {
-        func.apply(this, args);
+        func.apply(context, args);
       }, wait);
     }
     return result;

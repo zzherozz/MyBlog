@@ -1,10 +1,10 @@
 ---
 nav:
   title: Components
-  path: /js
+  path: /JavaScript
 ---
 
-## 浏览器 eventLoop 事件循环
+## JavaScript-浏览器 eventLoop 事件循环
 
 Event Loop 即事件循环，是指浏览器或 Node 的一种解决 javaScript 单线程运行时不会阻塞的一种机制，也就是我们经常使用异步的原理。
 

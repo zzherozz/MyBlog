@@ -1,10 +1,10 @@
 ---
 nav:
   title: Components
-  path: /js
+  path: /JavaScript
 ---
 
-## Promise 学习笔记
+## JavaScript-Promise
 
 定义：Promise 是一个对象，它代表了一个异步操作的最终完成或者失败。
 
