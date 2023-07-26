@@ -1,12 +1,12 @@
 ---
 nav:
   title: Components
-  path: /js
+  path: /JavaScript
 ---
 
-## 深拷贝和浅拷贝
+## JavaScript-深拷贝和浅拷贝
 
-浅拷贝和深拷贝都是对于 JS 中的引用类型而言的，浅拷贝就只是复制对象的引用，如果拷贝后的对象发生变化，原对象也会发生变化。只有深拷贝才是真正地对对象的拷贝。
+浅拷贝和深拷贝都是对于 JS 中的**引用类型**而言的，浅拷贝就只是复制对象的引用，如果拷贝后的对象发生变化，原对象也会发生变化。只有深拷贝才是真正地对对象的拷贝。
 
 ### 浅拷贝
 
@@ -105,14 +105,14 @@ JSON.stringify(obj, (key, value) => {
 
 ```jsx | pure
 const clone = (obj) => {
-  if(type of obj ===  'object'){
-    let cloneObj = Array.isArray(obj) ? [] : {}
-    for(const key in obj){
-      cloneObj[key] = clone(obj[key])
+  if (typeof obj === 'object') {
+    let cloneObj = Array.isArray(obj) ? [] : {};
+    for (const key in obj) {
+      cloneObj[key] = clone(obj[key]);
     }
     return cloneObj;
-  }else {
-    return obj
+  } else {
+    return obj;
   }
-}
+};
 ```
