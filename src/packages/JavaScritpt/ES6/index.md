@@ -4,7 +4,7 @@ nav:
   path: /JavaScript
 ---
 
-## JavaScript-ES6 常用方法
+## JavaScript-ES6 相关
 
 读阮一峰老师的[ECMAScript 6 入门](https://es6.ruanyifeng.com/)
 
@@ -64,7 +64,7 @@ a[mySymbol]; // "Hello!"
 // 注意对象不能使用点添加Symbol属性
 ```
 
-### 获得同一个 symbol 值 Symbol.for()
+#### 获得同一个 symbol 值 Symbol.for()
 
 ```jsx | pure
 let s1 = Symbol.for('foo');
@@ -74,6 +74,34 @@ s1 === s2; // true
 ```
 
 ### Iterator 迭代器和 for...of
+
+- Iterator 是解构赋值，剩余/扩展运算符，生成器，for of 循环实现的基础
+- 所谓迭代器，其实就是一个具有 next() 方法的对象，每次调用 next() 都会返回一个结果对象，该结果对象有两个属性，value 表示当前的值，done 表示遍历是否结束。
+
+```js
+function createIterator(items) {
+  var i = 0;
+  return {
+    next: function () {
+      var done = i >= items.length;
+      var value = !done ? items[i++] : undefined;
+
+      return {
+        done: done,
+        value: value,
+      };
+    },
+  };
+}
+
+// iterator 就是一个迭代器对象
+var iterator = createIterator([1, 2, 3]);
+
+console.log(iterator.next()); // { done: false, value: 1 }
+console.log(iterator.next()); // { done: false, value: 2 }
+console.log(iterator.next()); // { done: false, value: 3 }
+console.log(iterator.next()); // { done: true, value: undefined }
+```
 
 ### 剩余/扩展运算符
 
