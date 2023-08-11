@@ -103,9 +103,19 @@ console.log(iterator.next()); // { done: false, value: 3 }
 console.log(iterator.next()); // { done: true, value: undefined }
 ```
 
-### 剩余/扩展运算符
+#### 原生具备 Iterator 接口的数据结构如下。
+
+- Array
+- Map
+- Set
+- String
+- TypedArray （类数组）
+- 函数的 arguments 对象
+- NodeList 对象
 
 ### Set 和 Map
+
+![](./ES6相关问题.png)
 
 ### Proxy 和 Reflect
 
