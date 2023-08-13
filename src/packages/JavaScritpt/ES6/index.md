@@ -119,6 +119,6 @@ console.log(iterator.next()); // { done: true, value: undefined }
 
 ### Proxy 和 Reflect
 
-### Generator 函数的异步应用
+<!-- ### Generator 函数的异步应用
 
-### Module
+### Module -->
