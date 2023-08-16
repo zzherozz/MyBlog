@@ -13,7 +13,7 @@ features:
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d60657df-0822-4631-9d7c-e7a869c2f21c/k79dmz3q_w126_h126.png
     title: 工作笔记&小tips&经验
     desc: 制造bug&踩坑日记
-    link: /daily-record'
+    link: /daily-record
   - icon: https://gw.alipayobjects.com/zos/bmw-prod/d1ee0c6f-5aed-4a45-a507-339a4bfe076c/k7bjsocq_w144_h144.png
     title: 工具
     desc: 一些让人如沐春风的插件&工具函数
